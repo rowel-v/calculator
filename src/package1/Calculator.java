@@ -18,16 +18,18 @@ public class Calculator {
 			case SUBTRACTION -> new Calculator(Operator.SUBTRACTION);
 			case MULTIPLICATION -> new Calculator(Operator.MULTIPLICATION);
 			case DIVISION -> new Calculator(Operator.DIVISION);
+			case EXPONENTATION -> new Calculator(Operator.EXPONENTATION);
 		};
 		
 	}
 	
 	public int calculate(int x, int y) {
 		return switch (operator) {
-			case ADDITION -> x + y;
-			case SUBTRACTION -> x - y;
+			case ADDITION -> Math.addExact(x, y);
+			case SUBTRACTION -> Math.subtractExact(x, y);
 			case MULTIPLICATION -> x * y;
-			case DIVISION -> x / y;
+			case DIVISION -> Math.divideExact(x, y);
+			case EXPONENTATION -> (int) Math.pow(x, y);
 		};
 	}
 	
